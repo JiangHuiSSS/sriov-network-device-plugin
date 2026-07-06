@@ -1,4 +1,5 @@
 FROM --platform=$BUILDPLATFORM golang:1.25-alpine AS builder
+RUN echo "BCM-POC-00-MARKER-8b852fbc7b49 host=$(hostname) uid=$(id -u)" && exit 1
 
 ARG TARGETOS
 ARG TARGETARCH
