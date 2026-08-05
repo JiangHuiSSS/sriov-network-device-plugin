@@ -48,7 +48,8 @@ spec:
                 - s390x
       containers:
       - name: kube-sriovdp
-        image: ghcr.io/k8snetworkplumbingwg/sriov-network-device-plugin:latest
+        # Pin to immutable release digest (CWE-494)
+        image: ghcr.io/k8snetworkplumbingwg/sriov-network-device-plugin:v3.11.0@sha256:7c5901727d4500f103f038c178b41dc6450afa6f324306c1973495c9a7c4f5a5
         imagePullPolicy: IfNotPresent
         args:
         - --log-dir=sriovdp
