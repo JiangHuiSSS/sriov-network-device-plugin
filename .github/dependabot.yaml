@@ -9,6 +9,22 @@ updates:
   commit-message:
     prefix: "chore:"
 
+- package-ecosystem: "docker"
+  directory: "/deployments"
+  schedule:
+    interval: "weekly"
+    day: "monday"
+  commit-message:
+    prefix: "chore:"
+
+- package-ecosystem: "docker"
+  directory: "/deployments/cdi"
+  schedule:
+    interval: "weekly"
+    day: "monday"
+  commit-message:
+    prefix: "chore:"
+
 # GitHub Actions
 - package-ecosystem: "github-actions"
   directory: "/"
