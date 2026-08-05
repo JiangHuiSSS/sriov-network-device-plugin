@@ -12,6 +12,8 @@ jobs:
 
       - name: Check out code into the Go module directory
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Build
         run: make build
@@ -28,6 +30,8 @@ jobs:
 
       - name: Check out code into the Go module directory
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Install hwdata
         run: sudo apt-get install hwdata -y
@@ -46,6 +50,8 @@ jobs:
           go-version: 1.26.x
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Install hwdata
         run: sudo apt-get install hwdata -y
@@ -70,6 +76,8 @@ jobs:
 
       - name: checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: lint test
         run: make lint
@@ -81,6 +89,8 @@ jobs:
       SHELLCHECK_OPTS: -e SC3037 # disabled because of false issue in entrypoint.sh ln 14-21. Not using any complicated flags. Works with alpines almquist shell.
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
     - name: Run ShellCheck
       uses: ludeeus/action-shellcheck@00b27aa7cb85167568cb48a3838b75f4265f2bca # master
       with:
@@ -91,6 +101,8 @@ jobs:
     name: Hadolint
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
     - uses: hadolint/hadolint-action@2a66e89f53d0771bb131a7fa31f3136336094aa6 # v3.4.0
       name: Run Hadolint
       with:
@@ -101,6 +113,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
 
     - name: Set up Go
       uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
@@ -124,6 +138,8 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: build sriov-network-device-plugin image
         run: podman build -f images/Dockerfile -t ghaction-sriov-network-device-plugin:pr-${{github.event.pull_request.number}} .
@@ -133,6 +149,7 @@ jobs:
         with:
           repository: k8snetworkplumbingwg/sriov-network-operator
           path: sriov-network-operator-wc
+          persist-credentials: false
 
       - name: run test
         run: make test-e2e-conformance-virtual-k8s-cluster-ci
