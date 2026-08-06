@@ -54,8 +54,8 @@ spec:
       serviceAccountName: sriov-device-plugin
       containers:
       - name: kube-sriovdp
-        # Pin to immutable release digest (CWE-494)
-        image: ghcr.io/k8snetworkplumbingwg/sriov-network-device-plugin:v3.11.0@sha256:7c5901727d4500f103f038c178b41dc6450afa6f324306c1973495c9a7c4f5a5
+        # Refer to deployments/sriovdp-daemonset.yaml for the pinned release image and digest
+        image: ghcr.io/k8snetworkplumbingwg/sriov-network-device-plugin:<release-tag>
         imagePullPolicy: IfNotPresent
         args:
         - --log-dir=sriovdp
